@@ -9,51 +9,51 @@
 </head>
 <body class="bg-gray-100 h-screen">
       <h1 class="font-black text-5xl text-center md:w-2/3 mx-auto mt-20">
-          Seguimiento Pacientes
-          <span class="text-indigo-700">Veterinaria</span>
+          Patient Monitoring
+          <span class="text-indigo-700">Veterinary</span>
       </h1>
 
       <div class="mt-12 md:flex container mx-auto ">
           <div class="md:w-1/2 lg:w-2/5 mx-5">
-            <h2 class="font-black text-3xl text-center">Seguimiento Pacientes</h2>
+            <h2 class="font-black text-3xl text-center">Patient Monitoring</h2>
 
             <p class="text-lg mt-5 text-center mb-10">
-                Añade Pacientes y
-                <span class="text-indigo-600 font-bold">Administralos</span>
+                Add Patient and
+                <span class="text-indigo-600 font-bold">Manage</span>
             </p>
 
             <form 
-                id="formulario-cita"
+                id="form-appointment"
                 class="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
             >
                 <div class="mb-5">
-                    <label for="paciente" class="block text-gray-700 uppercase font-bold text-sm">
-                        Nombre Paciente:
+                    <label for="patient" class="block text-gray-700 uppercase font-bold text-sm">
+                        Patient Name:
                     </label>
                     <input
                         class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                         type="text"
-                        id="paciente"
-                        placeholder="Nombre Paciente"
-                        name="paciente"
+                        id="patient"
+                        placeholder="Patient Name"
+                        name="patient"
                     />  
                 </div>
 
                 <div class="mb-5">
-                    <label for="propietario" class="block text-gray-700 uppercase font-bold text-sm">
-                        Nombre Propietario:
+                    <label for="owner" class="block text-gray-700 uppercase font-bold text-sm">
+                        Owner Name:
                     </label>
                     <input
                         class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                         type="text"
-                        id="propietario"
-                        placeholder="Nombre Propietario"
-                        name="propietario"
+                        id="owner"
+                        placeholder="Owner Name"
+                        name="owner"
                     />  
                 </div>
                 <div class="mb-5">
                     <label for="email" class="block text-gray-700 uppercase font-bold text-sm">
-                        Email Contacto
+                        Contact Email:
                     </label>
                     <input
                         class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
@@ -66,44 +66,44 @@
 
                 <div class="mb-5">
                     <label for="fecha" class="block text-gray-700 uppercase font-bold text-sm">
-                        Fecha Alta
+                        Entry Date: 
                     </label>
                     <input
                         class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                         type="date"
-                        id="fecha"
-                        name="fecha"
+                        id="entryDate"
+                        name="entryDate"
                     />  
                 </div>
 
                 <div class="mb-5">
-                    <label for="sintomas" class="block text-gray-700 uppercase font-bold text-sm">
-                        Síntomas
+                    <label for="symptoms" class="block text-gray-700 uppercase font-bold text-sm">
+                        Symptoms:
                     </label>
                     <textarea
                         class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-                        id="sintomas"
-                        name="sintomas"
-                        placeholder="Síntomas del Paciente"
+                        id="symptoms"
+                        name="symptoms"
+                        placeholder="Patient's Symptoms"
                     ></textarea>  
                 </div>
 
                 <input
                     type="submit"
                     class="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors"
-                    value='Registrar Paciente'
+                    value='Patient Registration'
                 />
               </form>
           </div>
 
           <div class="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
-              <h2 class="font-black text-3xl text-center">Listado Pacientes</h2>
+              <h2 class="font-black text-3xl text-center">Patient List</h2>
               <p class="text-xl mt-5 mb-10 text-center">
-                  Administra tus
-                  <span class="text-indigo-600 font-bold ">Pacientes y Citas</span>
+                  Manage your
+                  <span class="text-indigo-600 font-bold ">Patient and Appointment</span>
               </p>
               <div id="citas">
-                  <p class="text-xl mt-5 mb-10 text-center">No Hay Pacientes</p>
+                  <p class="text-xl mt-5 mb-10 text-center">No Patients</p>
               </div>
           </div>
       </div>
