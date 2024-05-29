@@ -28,6 +28,58 @@ symptomsInput.addEventListener('change', dataAppointment);
 
 form.addEventListener('submit', submitAppointment);
 
+// Classes
+class Notification {
+    constructor({text, type}){
+        this.text = text;
+        this.type = type;
+
+        this.showNotification();
+    }
+
+    showNotification() {
+        //creating notification
+        const alert = document.createElement('DIV');
+        alert.classList.add('text-center', 'w-full', 'p-3', 'text-white', 'my-5', 'alert', 'uppercase', 'font-bold', 'text-sm');
+
+        // Deleting duplicated alerts with optional chaining
+        const prevAlert = document.querySelector('.alert');
+        prevAlert?.remove();
+        
+
+        // Alert type error, add a class
+        this.type === 'error' ? alert.classList.add('bg-red-500') : alert.classList.add('bg-green-500');
+
+        //Add Message
+        alert.textContent = this.text;
+
+        // Insert in the DOM
+        form.parentElement.insertBefore(alert, form);
+
+        // Hidden notification after 3 sec
+        setTimeout(() => {
+            alert.remove();
+        }, 3000);
+
+    }
+}
+
+class AdminAppointment {
+    constructor() {
+        this.appointment = [];
+        console.log(this.appointment);
+    }
+
+    addAppointment(appointment) {
+        this.appointment = [...this.appointment, appointment];
+        console.log(this.appointment);
+    }
+}
+
+
+// Instances of classes
+const appointment = new AdminAppointment();
+
 // Functions
 function dataAppointment(e){
     appObj[e.target.name] = e.target.value;
@@ -42,36 +94,15 @@ function submitAppointment(e){
             text: 'All fields are required',
             type: 'error',
         });
-        notification.showNotification();
         return;
     } else {
         const notification = new Notification({
             text: 'Appointment added successfully',
             type: 'success',
         });
-        notification.showNotification();
     }
+
+    appointment.addAppointment(appObj);
 }
 
-class Notification {
-    constructor({text, type}){
-        this.text = text;
-        this.type = type;
-    }
 
-    showNotification() {
-        //creating notification
-        const alert = document.createElement('DIV');
-        alert.classList.add('text-center', 'w-full', 'p-3', 'text-white', 'my-5', 'alert', 'uppercase', 'font-bold', 'text-sm');
-
-        // Alert type error, add a class
-        this.type === 'error' ? alert.classList.add('bg-red-500') : alert.classList.add('bg-green-500');
-
-        //Add Message
-        alert.textContent = this.text;
-
-        // Insert in the DOM
-        form.parentElement.insertBefore(alert, form);
-
-    }
-}
