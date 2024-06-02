@@ -1,10 +1,11 @@
 // Selectores
-const patientInput = document.querySelector('#patient');
-const ownerInput = document.querySelector('#owner');
-const emailInput = document.querySelector('#email');
-const dateInput = document.querySelector('#entryDate');
-const symptomsInput = document.querySelector('#symptoms');
-const form = document.querySelector('#form-appointment');
+const patientInput         = document.querySelector('#patient');
+const ownerInput           = document.querySelector('#owner');
+const emailInput           = document.querySelector('#email');
+const dateInput            = document.querySelector('#entryDate');
+const symptomsInput        = document.querySelector('#symptoms');
+const form                 = document.querySelector('#form-appointment');
+const appointmentContainer = document.querySelector('#appointment');
 
 // Appointment Object
 const appObj = {
@@ -66,13 +67,56 @@ class Notification {
 
 class AdminAppointment {
     constructor() {
-        this.appointment = [];
-        console.log(this.appointment);
+        this.appointments = [];
+        console.log(this.appointments);
     }
 
     addAppointment(appointment) {
-        this.appointment = [...this.appointment, appointment];
-        console.log(this.appointment);
+        this.appointments = [...this.appointments, appointment];
+        this.showAppointment();
+    }
+
+    showAppointment() {
+        // clear html previous
+        while(appointmentContainer.firstChild){
+            appointmentContainer.removeChild(appointmentContainer.firstChild);
+        }
+
+        // Generating appointments
+        this.appointments.forEach( appointment => {
+            const divAppointment = document.createElement('DIV');
+            divAppointment.classList.add('mx-5', 'my-10', 'bg-white', 'shadow-md', 'px-5', 'py-10', 'rounded-xl');
+
+            const patient     = document.createElement('P');
+            patient.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case');
+            patient.innerHTML = `<span class="font-bold uppercase">Patient: </span>${appointment.patient}`;
+
+            const owner     = document.createElement('P');
+            owner.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case');
+            owner.innerHTML = `<span class="font-bold uppercase">Owner: </span>${appointment.owner}`;
+
+            const email     = document.createElement('P');
+            email.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case');
+            email.innerHTML = `<span class="font-bold uppercase">Email: </span>${appointment.email}`;
+
+            const entryDate     = document.createElement('P');
+            entryDate.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case');
+            entryDate.innerHTML = `<span class="font-bold uppercase">Date: </span>${appointment.entryDate}`;
+
+            const symptoms     = document.createElement('P');
+            symptoms.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case');
+            symptoms.innerHTML = `<span class="font-bold uppercase">Symptoms: </span>${appointment.symptoms}`;
+            
+            // Add data appointment 
+            divAppointment.appendChild(patient);
+            divAppointment.appendChild(owner);
+            divAppointment.appendChild(email);
+            divAppointment.appendChild(entryDate);
+            divAppointment.appendChild(symptoms);
+
+            // Add appointment on HTML container
+            appointmentContainer.appendChild(divAppointment);
+        })
     }
 }
 
@@ -103,6 +147,21 @@ function submitAppointment(e){
     }
 
     appointment.addAppointment(appObj);
+
+    //Reset form 
+    form.reset();
+    // Reset obj
+    resetAppObj();
+}
+
+function resetAppObj() {
+    Object.assign(appObj, {
+        patient: '',
+        owner: '',
+        email: '',
+        entryDate: '',
+        symptoms: ''
+    });
 }
 
 
